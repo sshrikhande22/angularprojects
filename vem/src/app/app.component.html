@@ -1,0 +1,222 @@
+<div class="wrapper">
+  
+  <!-- Sidebar -->
+
+  <div class="sidebar">
+
+    <div class="sidebar-header">
+
+      <div class="logo-box"></div>
+
+      <span class="app-name">Escalation Cockpit</span>
+
+    </div>
+
+    <nav class="nav flex-column">
+
+      <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
+
+      <a class="nav-link" routerLink="/vem-view">VEM View</a>
+
+      <a class="nav-link" routerLink="/site-view">Site View</a>
+
+      <a class="nav-link" routerLink="/vmo-view">VMO View</a>
+
+      <a class="nav-link settings" routerLink="/settings">Settings</a>
+
+    </nav>
+
+  </div>
+
+  <!-- Main Content -->
+
+  <div class="main-content">
+
+    <nav class="topbar">
+
+      <h3 class="title" style="font-size: 25px;">VEM Level View</h3>
+
+      <div class="search-bar">
+
+        <input type="text" placeholder="Search here..." />
+
+      </div>
+
+      <div class="user-profile">
+
+        <div class="user-info">
+
+          <span class="username">Welcome Suresh</span>
+
+
+        </div>
+
+        <img class="user-img" src="https://placehold.co/60x60" alt="User" />
+
+      </div>
+
+    </nav>
+
+    <div class="top-section">
+      <!-- Dashboard Cards -->
+
+      <div class="dashboard">
+        <div class="stat-card" *ngFor="let card of cards">
+          <div class="stat-header">
+            <img [src]="card.icon" alt="Icon" class="stat-icon" />
+            <span class="stat-title">{{ card.title }}</span>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ card.value }}</div>
+            <div class="stat-change" [ngClass]="card.change > 0 ? 'positive' : 'negative'">
+              {{ card.change }}% <span [innerHTML]="card.change > 0 ? '&#9650;' : '&#9660;'"></span>
+            </div>
+          </div>
+          <div class="stat-chart">
+            <canvas #chartCanvas></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart_leaderboard">
+      <div #chart class="chart">
+      </div>
+      <div class="leaderboard">
+        <h2>Specialization</h2>
+      
+        <div class="time-filter">
+          <span>1 min</span>
+          <span>5 min</span>
+          <span>15 min</span>
+          <span class="active">1</span>
+          <span>4 hr</span>
+          <span>1 day</span>
+        </div>
+
+        <div class="data-table">
+          <div *ngFor="let item of specializations" class="data-row">
+            <div class="icon-name">
+              <img [src]="item.icon" alt="{{ item.name }}" class="icon" />
+              <span>{{ item.name }}</span>
+            </div>
+            <div class="value">{{ item.value | number }}</div>
+            <div class="change" [ngClass]="{'up': item.change > 0, 'down': item.change < 0}">
+              {{ (item.change * 100) | number:'1.2-2' }}%
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <div class="table-container">
+      <div class="table-section">
+        <h5>Escalation Type</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let escalation of escalations">
+              <td>{{ escalation.id }}</td>
+              <td>{{ escalation.name }}</td>
+              <td>
+                <div class="progress-container">
+                <div class="progress-bar" [ngStyle]="{'width': escalation.percentage + '%', 'background-color': escalation.color}"></div>
+                  <span class="percentage-label">{{ escalation.percentage }}%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-section">
+        <h5>VEM QA Score</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let escalation of escalations">
+              <td>{{ escalation.id }}</td>
+              <td>{{ escalation.name }}</td>
+              <td>
+                <div class="progress-container">
+                <div class="progress-bar" [ngStyle]="{'width': escalation.percentage + '%', 'background-color': escalation.color}"></div>
+                  <span class="percentage-label">{{ escalation.percentage }}%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-section">
+        <h5>AI RCA</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let escalation of escalations1">
+              <td>{{ escalation.id }}</td>
+              <td>{{ escalation.name }}</td>
+              <td>
+                <div class="progress-container">
+                <div class="progress-bar" [ngStyle]="{'width': escalation.percentage + '%', 'background-color': escalation.color}"></div>
+                  <span class="percentage-label">{{ escalation.percentage }}%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-section">
+        <h5>Escalation < 24hrs </h5>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let escalation of escalations">
+              <td>{{ escalation.id }}</td>
+              <td>{{ escalation.name }}</td>
+              <td>
+                <div class="progress-container">
+                <div class="progress-bar" [ngStyle]="{'width': escalation.percentage + '%', 'background-color': escalation.color}"></div>
+                  <span class="percentage-label">{{ escalation.percentage }}%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+ 
+
+
+
+
+  </div>
+
+
+</div>

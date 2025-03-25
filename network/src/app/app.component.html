@@ -1,0 +1,175 @@
+<div class="wrapper">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-box"></div>
+      <span class="app-name">Escalation Cockpit</span>
+    </div>
+
+    <nav class="nav flex-column">
+      <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
+      <a class="nav-link" routerLink="/vem-view">VEM View</a>
+      <a class="nav-link" routerLink="/site-view">Site View</a>
+      <a class="nav-link" routerLink="/vmo-view">VMO View</a>
+      <a class="nav-link settings" routerLink="/settings">Settings</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <nav class="topbar">
+      <h3 class="title">Network Level</h3>
+      <div class="search-bar">
+        <input type="text" placeholder="Search here..." />
+      </div>
+      <div class="user-profile">
+        <span class="username">Welcome User!</span>
+        <img class="user-img" src="https://placehold.co/60x60" alt="User" />
+      </div>
+    </nav>
+
+    <!-- Filters -->
+    <div class="lists">
+      <h4>Timeframe</h4>
+      <div class="dropdown"> 
+      <select>
+        <option value="select">Select</option>
+        <option value="all-time">All-time</option>
+        <option value="monthly">Monthly</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      </div>
+      <h4>VMO</h4>
+      <div class="dropdown">
+        <select>
+          <option value="select">Select</option>
+        </select>
+      </div>
+      <h4>Specialization</h4>
+      <div class="dropdown">
+        <select>
+          <option value="select">Select</option>
+          <option value="Tech Site Heat Map">Tech Site Heat Map</option>
+          <option value="Age bucket of the open escalation">Age bucket of the open escalation</option>
+          <option value="escalation %">escalation %</option>
+        </select>
+      </div>
+      <h4>Sites</h4>
+      <div class="dropdown">
+        <select>
+          <option value="select">Select</option>
+          <option value="CGN Hyd">CGN Hyd</option>
+          <option value="Infosys Bang">Infosys Bang</option>
+        </select>
+      </div>
+      <h4>Category</h4>
+      <div class="dropdown">
+        <select>
+          <option value="select">Select</option>
+          <option value="GKE">GKE</option>
+          <option value="Security">Security</option>
+          <option value="Storage">Storage</option>
+          <option value="AI/ML">AI/ML</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Top Section -->
+    <div class="top-section">
+      <div class="dashboard-summary">
+        <div class="card">
+          <h5>Overall %</h5>
+          <span class="value">27</span><small>/80</small>
+        </div>
+        <div class="card">
+          <h5>Overall Escalation</h5>
+          <span class="value">3,298</span>
+        </div>
+        <div class="card">
+          <h5>Focus Customers</h5>
+          <span class="value">500</span>
+        </div>
+        <div class="card">
+          <h5>Month to Date Inflow</h5>
+          <span class="value">64%</span>
+        </div>
+        <div class="card">
+          <h5>Month to Date Closure</h5>
+          <span class="value">86%</span>
+        </div>
+        <div class="card">
+          <h5>Re-Escalated Cases</h5>
+          <span class="value">+34%</span>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-box">
+          <h4>Specializations</h4>
+          <select>
+            <option value="year">Year</option>
+            <option value="month">Month</option>
+            <option value="week">Week</option>
+          </select>
+          <canvas id="chart1"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <div class="chart-box">
+        <h5>Escalation Origin</h5>
+        <canvas id="chart2"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>Escalation Age</h5>
+        <canvas id="chart3"></canvas>
+      </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard-wrapper">
+      <!-- Site Leaderboard -->
+      <div class="leaderboard-card">
+        <h2>Site Leaderboard</h2>
+        <div *ngFor="let entry of leaderboard" class="leaderboard-entry">
+          <div class="profile">
+            <img [src]="entry.profileImage" alt="{{ entry.name }}" class="profile-image" />
+            <span class="name">{{ entry.name }}</span>
+          </div>
+          <div class="details">
+            <p class="points">{{ entry.points }} Points</p>
+            <span class="accuracy">{{ entry.accuracy }}% Correct</span>
+          </div>
+          <div class="position">
+            <span>{{ entry.position }}</span>
+            <span class="movement" [ngClass]="{'up': entry.movement === 'up', 'down': entry.movement === 'down'}">
+              <ng-container *ngIf="entry.movement === 'up'">▲</ng-container>
+              <ng-container *ngIf="entry.movement === 'down'">▼</ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specialization Leaderboard -->
+      <div class="leaderboard-card">
+        <h2>Specialization Leaderboard</h2>
+        <div *ngFor="let entry of specializationLeaderboard" class="leaderboard-entry">
+          <span class="name">{{ entry.name }}</span>
+          <div class="details">
+            <p class="points">{{ entry.points }} Points</p>
+            <span class="accuracy">{{ entry.accuracy }}% Correct</span>
+          </div>
+          <div class="position">
+            <span>{{ entry.position }}</span>
+            <span class="movement" [ngClass]="{'up': entry.movement === 'up', 'down': entry.movement === 'down'}">
+              <ng-container *ngIf="entry.movement === 'up'">▲</ng-container>
+              <ng-container *ngIf="entry.movement === 'down'">▼</ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

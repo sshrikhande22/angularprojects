@@ -1,0 +1,196 @@
+<div class="wrapper">
+
+  <!-- Sidebar -->
+
+  <div class="sidebar">
+
+    <div class="sidebar-header">
+
+      <div class="logo-box"></div>
+
+      <span class="app-name">Escalation Cockpit</span>
+
+    </div>
+
+    <nav class="nav flex-column">
+
+      <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
+
+      <a class="nav-link" routerLink="/vem-view">VEM View</a>
+
+      <a class="nav-link" routerLink="/site-view">Site View</a>
+
+      <a class="nav-link" routerLink="/vmo-view">VMO View</a>
+
+      <a class="nav-link settings" routerLink="/settings">Settings</a>
+
+    </nav>
+
+  </div>
+
+
+
+  <!-- Main Content -->
+
+  <div class="main-content">
+
+    <nav class="topbar">
+
+      <h3 class="title">Network Level</h3>
+
+      <div class="search-bar">
+
+        <input type="text" placeholder="Search here..." />
+
+      </div>
+
+      <div class="user-profile">
+
+        <div class="user-info">
+
+          <span class="username">Welcome Suresh</span>
+
+
+        </div>
+
+        <img class="user-img" src="https://placehold.co/60x60" alt="User" />
+
+      </div>
+
+    </nav>
+
+
+    <div class="top-section">
+
+      <!-- Dashboard Cards -->
+
+      <div class= "dashboard-summary-wrapper">
+        <h3>Today's Escalations</h3>
+        <p>Summary</p>
+        <div class= "dashboard-summary">
+
+            <div class="card total-escalations">
+
+              <h5>Total</h5>
+
+              <span class="value">1k<br></span>
+
+              <small>+8% from yesterday</small>
+
+            </div>
+
+            <div class="card new-escalations">
+
+              <h5>New Escalations</h5>
+
+              <span class="value">300<br></span>
+
+              <small>+5% from yesterday</small>
+
+            </div>
+
+            <div class="card non-premium">
+
+              <h5>Non Premium</h5>
+
+              <span class="value">5<br></span>
+
+              <small>+1.2% from yesterday</small>
+
+            </div>
+
+            <div class="card premium">
+
+              <h5>Premium</h5>
+
+              <span class="value">8<br></span>
+
+              <small>+0.5% from yesterday</small>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="chart-box1">
+
+          <h5>Sentiment Insights</h5>
+
+          <canvas id="sentimentChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Charts Section -->
+
+    <div class="charts-section">
+
+      <div class="chart-box">
+
+        <h5>Premium vs. Non-Premium</h5>
+
+        <canvas id="premiumChart"></canvas>
+
+      </div>
+      
+      <div class="chart-box">
+
+        <h5>Predictive vs. Actual Escalation</h5>
+
+        <canvas id="predictiveChart"></canvas>
+
+      </div>
+
+      <div class="chart-box">
+
+          <h5>Target vs Actual</h5>
+
+          <canvas id="TargetChart"></canvas>
+
+      </div> 
+
+      <div class="table-section">
+        <h5>Escalation Type</h5>
+        <table>
+        <thead>
+        <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Popularity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let escalation of escalations">
+        <td>{{ escalation.id }}</td>
+        <td>{{ escalation.name }}</td>
+        <td>
+        <div class="progress-container">
+        <div class="progress-bar" [ngStyle]="{'width': escalation.percentage + '%', 'background-color': escalation.color}"></div>
+        <span class="percentage-label">{{ escalation.percentage }}%</span>
+        </div>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+         
+         
+
+      <div class="escalation-mapping">
+        <h5 class="title">Escalation Mapping by Country</h5>
+        <img src="escmap.png" class="img">
+      </div>
+
+      <div class="chart-box">
+
+        <h5>Inflow vs. Closure</h5>
+
+        <canvas id="inflowChart"></canvas>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
