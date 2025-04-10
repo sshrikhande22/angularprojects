@@ -1,0 +1,219 @@
+<div class="wrapper">
+
+  <!-- Sidebar -->
+
+  <div class="sidebar">
+
+    <div class="sidebar-header">
+
+      <div class="logo-box"></div>
+
+      <span class="app-name">Escalation Cockpit</span>
+
+    </div>
+
+    <nav class="nav flex-column">
+
+      <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
+
+      <a class="nav-link" routerLink="/vem-view">VEM View</a>
+
+      <a class="nav-link" routerLink="/site-view">Site View</a>
+
+      <a class="nav-link" routerLink="/vmo-view">VMO View</a>
+
+      <a class="nav-link settings" routerLink="/settings">Settings</a>
+
+    </nav>
+
+  </div>
+
+  <!-- Main Content -->
+
+  <div class="main-content">
+
+    <nav class="topbar">
+
+      <h3 class="title">Network Level</h3>
+
+      <div class="search-bar">
+
+        <input type="text" placeholder="Search here..." />
+
+      </div>
+
+      <div class="user-profile">
+
+        <div class="user-info">
+
+          <span class="username">Welcome Suresh</span>
+
+
+        </div>
+
+        <img class="user-img" src="https://placehold.co/60x60" alt="User" />
+
+      </div>
+
+    </nav>
+
+    <div class="top-section">
+      <div class="p-container">
+        <h2 class="p-header">Predictive Escalation - Critical/Top Customer View</h2>
+        <p class="p-subheader">✅ 30 done this month</p>
+    
+        <table class="p-table">
+          <thead>
+            <tr>
+              <th>Companies</th>
+              <th>Members</th>
+              <th>Case Status</th>
+              <th>Cause of Delay</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of escalationData">
+              <td>
+                <div class="p-company">
+                  <img [src]="item.logo" />
+                  <span>{{ item.company }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-members">
+                  <img
+                    *ngFor="let member of item.members"
+                    [src]="member"
+                  />
+                </div>
+              </td>
+              <td class="p-status">{{ item.caseStatus }}</td>
+              <td>
+                <div class="p-progress-container">
+                  <div
+                    class="p-progress-bar"
+                    [ngStyle]="{ 'width': item.causeOfDelay + '%' }"
+                     [ngClass]="{
+                        'progress-green': item.causeOfDelay,
+                      }"
+                  ></div>
+                </div>
+                <span class="p-progress-text">{{ item.causeOfDelay }}%</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="timeline-container">
+        <h2 class="timeline-title">Chakra Soft UI Version</h2>
+        <p class="timeline-subtitle">Steps Taken</p>
+      
+        <div class="timeline">
+          <div *ngFor="let item of timelineData" class="timeline-item">
+            <div class="timeline-icon">{{ item.icon }}</div>
+            <div class="timeline-content">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.date }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="middle-section">
+      <div class="table-container1">
+        <h2 class="table-title">Top Escalation Bucket</h2>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>SL No</th>
+              <th>Name</th>
+              <th>Cases</th>
+              <th>MoM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of escalationCases">
+              <td>{{ item.slNo }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.cases }}</td>
+              <td [ngClass]="getMoMClass(item.mom)">{{ item.mom }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-container2">
+        <h2 class="table-title">Site Details</h2>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>STATUS</th>
+              <th>Active Cases</th>
+              <th>Escalations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let site of siteDetails">
+              <td class="site-name">{{ site.site }}</td>
+              <td class="status">
+                <span [ngClass]="getStatusClass(site.status)">
+                  <span class="status-icon"></span> {{ site.status }}
+                </span>
+              </td>
+              <td class="active-cases">{{ site.activeCases }}</td>
+              <td class="progress-bar-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="site.escalations"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bottom-section">
+
+      <div class="table-container3">
+        <h2 class="table-title">Escalations Vs Inflight Signals</h2>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>STATUS</th>
+              <th>Active Cases</th>
+              <th>In-flight Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tableData">
+              <td class="site-name">{{ item.site }}</td>
+              <td class="status">
+                <span [ngClass]="getStatusClass(item.status)">
+                  <span class="status-icon"></span> {{ item.status }}
+                </span>
+              </td>
+              <td class="active-cases">{{ item.activeCases }}</td>
+              <td class="progress-bar-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="item.inflightSignal"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>
