@@ -1,0 +1,30 @@
+
+
+.wrapper {
+
+    display: flex;
+  
+    height: 100vh;
+  
+    background: #FAFBFC;
+  
+    font-family: 'Poppins', sans-serif;
+  
+  }
+
+  .main-content {
+
+    flex-grow: 1;
+  
+    padding: 20px 40px;
+  
+    overflow-y: auto;
+  
+  }
+
+  .body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%}

@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <app-sidebar/>
+      <!-- main-content -->
+    
+    <div class="main-content">
+    
+        <app-topbar/>
+    
+        <div class="container">
+          <!-- total score -->
+          <div class="stats-container">
+ 
+            <div class="time-filter">
+<h3>Overview</h3>
+<div class="dropdown">
+<select>
+<option value="all-time">Overall</option>
+<option value="monthly">Last month</option>
+<option value="weekly">Last week</option>
+</select>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-card" *ngFor="let stat of training_statistics">
+<div class="stat-header">
+<span>{{ stat.title }}</span>
+<span class="menu-icon">⋯</span>
+</div>
+<div class="stat-value">
+<strong>{{ stat.value }}</strong>
+<div *ngIf="stat.progress !== undefined" class="progress-bar">
+<div class="progress" [style.width.%]="stat.progress"></div>
+</div>
+</div>
+<div class="extra-info" *ngIf="stat.extra">
+<span class="extra-badge">{{ stat.extra }}</span>
+</div>
+<div class="extra-info" *ngIf="stat.badge">
+<span class="badge">{{ stat.badge }}</span>
+</div>
+</div>
+</div>
+</div>
+          <!-- tsr completion view -->
+          <div class="progress-card">
+            <p class="title">TSR Completion%</p>
+            <canvas id="progressChart"></canvas>
+          </div>
+        </div>
+    </div>
+</div>

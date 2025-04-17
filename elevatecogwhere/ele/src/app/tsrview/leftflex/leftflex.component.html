@@ -1,0 +1,51 @@
+
+    <div class="left">
+        <!-- Middle Score Tab -->
+        <div class="score-tab">
+        <div class="score-header">
+            <span>Gain more points today:</span>
+            <strong>Turbo Quiz</strong>
+        </div>
+        <div class="score-body">
+            <span class="points">30</span>
+            <button class="go-btn">Go</button>
+        </div>
+        </div>
+    
+        <!-- My Performance -->
+        <div class="performance-box">
+        <h3>My Performance</h3>
+        <div *ngFor="let item of performance" class="metric">
+            <div class="metric-title">
+            {{ item.name }}
+            <span class="points">{{ item.points }}</span>
+            </div>
+            <div class="metric-score">
+            <span>{{ item.value }} / {{ item.target }}%</span>
+            </div>
+            <div class="progress-bar">
+            <div class="fill" [style.width.%]="item.value"></div>
+            </div>
+        </div>
+        </div>
+    
+        <!-- My Missions -->
+        <div class="missions-box">
+        <h3>My Missions</h3>
+        <div *ngFor="let mission of missions" class="mission">
+            <div class="mission-left">
+            <div class="bar-container">
+                <div class="bar-fill" [style.width.%]="mission.progress"></div>
+            </div>
+            <span>{{ mission.progress }}%</span>
+            </div>
+            <div class="mission-right">
+            <strong>{{ mission.name }}</strong>
+            </div>
+            <div class="open-missions">
+            <small>{{ mission.openMissions }} open missions</small>
+            </div>
+        </div>
+        </div>
+    </div>
+

@@ -1,8 +1,0 @@
-
-{
-  "performance": [
-    { "metric": "CSAT", "value": 45.5 },
-    { "metric": "FCR", "value": 59.8 },
-    { "metric": "Monitoring", "value": 53.7 }
-  ]
-}

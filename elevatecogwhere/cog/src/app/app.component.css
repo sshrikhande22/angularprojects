@@ -1,0 +1,331 @@
+/* General Wrapper Layout */
+.wrapper {
+  display: flex;
+  height: 100vh;
+  background: #fafbfc;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: row;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Left Section */
+.left {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  align-items: flex-start;
+}
+
+/* Score Tab */
+.score-tab {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.score-header {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.score-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.points {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.go-btn {
+  background: #ffa726;
+  border: none;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Performance Box */
+.performance-box, .missions-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.performance-box h3, .missions-box h3 {
+  margin-bottom: 15px;
+}
+
+.metric {
+  margin-bottom: 15px;
+}
+
+.metric-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.metric-score {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 6px;
+  height: 8px;
+  margin-top: 4px;
+}
+
+.fill {
+  background: #2196f3;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* Missions Box */
+.mission {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mission-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+}
+
+.open-missions {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.bar-container {
+  height: 8px;
+  width: 40px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.bar-fill {
+  height: 8px;
+  background: #2196f3;
+  border-radius: 4px;
+}
+
+.mission-right {
+  flex: 1;
+  padding-left: 10px;
+}
+
+/* Right Section */
+.right {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.trace {
+  margin-top: 10px;
+  width: 400px;
+  background: white;
+}
+
+/* Cards Layout */
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 16px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: white;
+}
+
+/* Challenges Card */
+.card .header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.card .content {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+}
+
+.challenge-title {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.progress-info {
+  font-size: 20px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 6px 0;
+  overflow: hidden;
+  width: 70%;
+}
+
+.bar {
+  height: 100%;
+  background: #0044cc;
+}
+
+.time-left {
+  font-size: 12px;
+  color: #666;
+}
+
+.right img {
+  width: 80px;
+  height: auto;
+}
+
+/* Leaderboard Card */
+.ranking {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rank-info {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rank-info .label {
+  font-size: 12px;
+  color: #666;
+}
+
+.podium {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.podium-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  position: relative;
+}
+
+.step {
+  background-color: #bcd;
+  padding: 6px 10px;
+  border-radius: 4px 4px 0 0;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Vary heights for rank 1, 2, 3 */
+.rank-1 .step { height: 60px; background-color: #9ab; }
+.rank-2 .step { height: 45px; background-color: #9ab; }
+.rank-3 .step { height: 35px; background-color: #9ab; }
+
+/* Achievements Card */
+.badges {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 15px;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .wrapper {
+      flex-direction: column;
+  }
+
+  .left, .right {
+      max-width: 100%;
+  }
+
+  .cards {
+      flex-direction: column;
+  }
+
+  .card {
+      max-width: 100%;
+  }
+}

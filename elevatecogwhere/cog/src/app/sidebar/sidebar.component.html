@@ -1,0 +1,28 @@
+<div class="sidebar">
+
+    <div class="sidebar-header">
+      <div class="logo-box">
+        <img src="logo.png" style="width: 30px; height: 30px;">
+      </div>
+      <span class="app-name">Elevate360</span>
+    </div>
+
+    <div class="profile-card">
+      <img [src]="user.imageUrl" alt="Profile Picture" class="profile-pic" />
+      <div class="profile-info">
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.role }}</p>
+      </div>
+    </div>
+
+    <nav class="nav flex-column">
+      <a class="nav-link" routerLink="/home"><img src="home.png" style="width: 20px; height: 20px; padding-right: 10px;"/>Home</a>
+      <a class="nav-link" routerLink="/missions"> <img src="cap.png" style="width: 20px; height: 20px; padding-right: 10px;"/>My Missions</a>
+      <a class="nav-link" routerLink="/challenges"> <img src="challenges.png" style="width: 20px; height: 20px; padding-right: 10px;"/>My Challenges</a>
+      <a class="nav-link" routerLink="/coaching"> <img src="coach.png" style="width: 20px; height: 20px; padding-right: 10px;"/>Coaching</a>
+      <a class="nav-link" routerLink="/levels"> <img src="level.png" style="width: 20px; height: 20px; padding-right: 10px;"/>My Levels</a>
+      <a class="nav-link" routerLink="/badges"> <img src="badges.png" style="width: 20px; height: 20px; padding-right: 10px;"/>My Badges</a>
+      <a class="nav-link" routerLink="/leaderboard"> <img src="leader.png" style="width: 20px; height: 20px; padding-right: 10px;"/>Leaderboard</a>
+      <a class="nav-link" routerLink="/catalog"> <img src="catalog.png" style="width: 20px; height: 20px; padding-right: 10px;"/>Course Catalog</a>
+    </nav>
+</div>

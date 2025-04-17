@@ -1,0 +1,68 @@
+<div class="right">
+    <div class="trace">
+      <img src="track.png" style="width: 520px; height: 400px; border-radius: 10px;">
+    </div>
+    <div class="cards">
+      <div class="card challenges">
+        <div class="header">
+          <span class="title">My Challenges</span>
+          <span class="count">{{ totalChallenges }} open challenges</span>
+        </div>
+        
+        <div class="content">
+          <div class="left">
+            <div class="challenge-title">{{ title }}</div>
+            <div class="progress-info">{{ progress }} / {{ target }}%</div>
+            <div class="progress-bar">
+              <div class="bar" [style.width.%]="(progress / target) * 100"></div>
+            </div>
+            <div class="time-left">{{ daysLeft }} day left</div>
+          </div>
+        
+          <div class="right">
+            <img src="graphic.png">
+          </div>
+        </div>
+      </div>
+
+        
+      <div class="card leaderboard">
+        <div class="header">
+          <span class="title">Leaderboard</span>
+          <span class="count">{{ totalMembers }} in my team</span>
+        </div>
+        <div class="ranking">
+          <div class="rank-info">
+            <span class="rank">{{ myRank }} / {{ totalMembers }}</span>
+            <span class="label">My rank</span>
+          </div>
+        
+          <div class="podium">
+            <div *ngFor="let user of podium" class="podium-item rank-{{user.rank}}">
+              <img [src]="user.image" style="width: 30px; height: 30px;"/>
+              <div class="step">{{ user.rank }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+        
+      <div class="card achievements">
+        <div class="header">
+          <span class="title">My Achievements</span>
+          <span class="count">{{ badgesCount }} badges</span>
+        </div>
+      
+        <div class="badges">
+          <div class="badge" *ngFor="let badge of badges">
+            <img [src]="badge.image" />
+            <div class="label">{{ badge.label }}</div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+    
+
+</div>
